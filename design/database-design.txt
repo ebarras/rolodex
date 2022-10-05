@@ -1,0 +1,57 @@
+Users
+  Default User Class for Django
+  Mapped to Social Login for Security
+  (Maybe Remap to a local 2fa app, start simple)
+
+Contacts
+  id
+  created_at
+  updated_at
+  name
+  phone_number
+  birthday
+  (many-to-many: Addresses_Contacts)
+  (fk: Social)
+  (fk: PhoneNumbers)
+  (fk: Emails)
+
+Addresses
+  id
+  line1
+  line2
+  line3
+  city
+  zip_or_post_code
+  state_province_county
+  country
+  other_address_details
+  (many-to-many: Addresses_Contacts)
+
+Addresses_Contacts
+  contact_id
+  address_id
+
+PhoneNumbers
+  id
+  type [cell, work, business, office]
+  number
+  contact_id (fk contacts)
+
+Emails
+  id
+  type [work, personal, business, support]
+  address
+
+Socials
+  id
+  type [facebook, instagram, etc]
+  username
+  link
+  contact_id (fk contacts)
+
+Notes
+  id
+  created_at
+  updated_at
+  note
+  contact_id (fk contacts)
